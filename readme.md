@@ -28,7 +28,7 @@ Lucene/Lucene.Net provides:
 ## SyncDirectory
 SyncDirectory uses a local Directory on the fast volatile local storage of an App Service instance (storage not shared between instances when scaling) to cache files as they are created and automatically pushes them to another directory on the permanent, shared and much slower network based storage as appropriate. when new instances of your scaled Azure App Service startup, they will sync the master index on the slow but permanent network based storage to the fast volatile local index.
 
-read more about the Azure App Service file system (here)[https://github.com/projectkudu/kudu/wiki/Understanding-the-Azure-App-Service-file-system]
+read more about the Azure App Service file system [here](https://github.com/projectkudu/kudu/wiki/Understanding-the-Azure-App-Service-file-system)
 
 This Directory implementation is supposed to work with one app service instance adding documents to an index, and 1..N searcher instances (scaled app service) searching over the catalog.
 
