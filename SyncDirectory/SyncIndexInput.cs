@@ -80,19 +80,28 @@ namespace Lucene.Net.Store.Azure
                     byte[] primaryInputBytes = new byte[primaryInput.Length];
                     primaryInput.ReadBytes(primaryInputBytes, 0, (int)primaryInputBytes.Length);
 
-                    var cachedOutput = CacheDirectory.CreateOutput(fileName, IOContext.DEFAULT);
-                    cachedOutput.WriteBytes(primaryInputBytes, (int)primaryInputBytes.Length);
+                    using (var cachedOutput = CacheDirectory.CreateOutput(fileName, IOContext.DEFAULT))
+                    {
+                        cachedOutput.WriteBytes(primaryInputBytes, (int)primaryInputBytes.Length);
+                        cachedOutput.Flush();
+                    }
+                    primaryInput.Dispose();
+
+                    var cachedFilePath = Path.Combine(_syncDirectory.CacheDirectoryPath, fileName);
+                    var primaryFilePath = Path.Combine(_syncDirectory.PrimaryDirectoryPath, fileName);
+                    var primaryLastModified = File.GetLastWriteTimeUtc(primaryFilePath);
+                    File.SetLastWriteTimeUtc(cachedFilePath,primaryLastModified);
 
                     //using (var fileStream = _azureDirectory.CreateCachedOutputAsStream(fileName))
                     //{
-                        
+
                     //    // get the blob
                     //    _blob.DownloadToStream(fileStream);
 
                     //    fileStream.Flush();
                     //    Debug.WriteLine(string.Format("GET {0} RETREIVED {1} bytes", _name, fileStream.Length));
                     //}
-                    
+
 
                     // and open it as an input 
                     _indexInput = CacheDirectory.OpenInput(fileName,IOContext.DEFAULT);

@@ -68,10 +68,11 @@ namespace Lucene.Net.Store.Azure
                     byte[] cacheInputBytes = new byte[cacheInput.Length];
                     cacheInput.ReadBytes(cacheInputBytes, 0, (int)cacheInputBytes.Length);
 
-                    var primaryOutput = PrimaryDirectory.CreateOutput(fileName, IOContext.DEFAULT);
-                    primaryOutput.WriteBytes(cacheInputBytes, (int)cacheInputBytes.Length);
-                    primaryOutput.Flush();
-                    primaryOutput.Dispose();
+                    using (var primaryOutput = PrimaryDirectory.CreateOutput(fileName, IOContext.DEFAULT))
+                    {
+                        primaryOutput.WriteBytes(cacheInputBytes, (int)cacheInputBytes.Length);
+                        primaryOutput.Flush();
+                    }
                     cacheInput.Dispose();
                     // push the blobStream up to the cloud
                     //_blob.UploadFromStream(blobStream);
