@@ -1,0 +1,9 @@
+.vs/
+bin/
+obj/
+*.suo
+*.user
+csx/
+Profiles/
+*.ncrunch*
+packages/

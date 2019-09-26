@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyncDirectory", "SyncDirectory\SyncDirectory.csproj", "{6DA2730E-DBF0-4BFC-8284-77C5B242A7A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncDirectoryTests", "SyncDirectoryTests\SyncDirectoryTests.csproj", "{49D6699E-E8F0-4030-A52C-BCE3E77358C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DA2730E-DBF0-4BFC-8284-77C5B242A7A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DA2730E-DBF0-4BFC-8284-77C5B242A7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DA2730E-DBF0-4BFC-8284-77C5B242A7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DA2730E-DBF0-4BFC-8284-77C5B242A7A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D6699E-E8F0-4030-A52C-BCE3E77358C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D6699E-E8F0-4030-A52C-BCE3E77358C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D6699E-E8F0-4030-A52C-BCE3E77358C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D6699E-E8F0-4030-A52C-BCE3E77358C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4712BAF2-32FC-4A46-9C92-06241EE5F6B0}
+	EndGlobalSection
+EndGlobal
