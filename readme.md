@@ -10,23 +10,10 @@ Lucene.Net is a robust open source search technology which has an abstract inter
 ## About
 This project is meant to improve the experience of using Lucene.Net in Azure.
 
-## Background
-Lucene is a mature Java based open source full text indexing and search engine and property store.
-Lucene.NET is a mature port of that library to C#.
-Lucene/Lucene.Net provides:
-* Super simple API for storing documents with arbitrary properties
-* Complete control over what is indexed and what is stored for retrieval
-* Robust control over where and how things are indexed, how much memory is used, etc.
-* Superfast and super rich query capabilities
-	* Sorted results
-	* Rich constraint semantics AND/OR/NOT etc.
-	* Rich text semantics (phrase match, wildcard match, near, fuzzy match etc)
-	* Text query syntax (example: Title:(dog AND cat) OR Body:Lucen* )
-	* Programmatic expressions
-	* Ranked results with custom ranking algorithms
+## SyncDirectory
+SyncDirectory uses a local Directory on the fast volatile local storage of an App Service instance (storage not shared between instances when scaling) to cache files as they are created and automatically pushes them to another directory on the permanent, shared and much slower network based storage as appropriate. when new instances of your scaled Azure App Service startup, they will sync the master index on the slow but permanent network based storage to the fast volatile local index.
 
-## AzureDirectory
-SyncDirectory uses a local Directory on the fast volatile local storage of an App Service instance (storage not shared between instances when scaling) to cache files as they are created and automatically pushes them to another directory on the permanent, shared and much slower network based storage as appropriate.
+read more about the Azure App Service file system [here](https://github.com/projectkudu/kudu/wiki/Understanding-the-Azure-App-Service-file-system)
 
 This Directory implementation is supposed to work with one app service instance adding documents to an index, and 1..N searcher instances (scaled app service) searching over the catalog.
 
